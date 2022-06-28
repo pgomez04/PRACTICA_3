@@ -42,7 +42,7 @@ static void IntDefaultHandler(void);
 //
 //*****************************************************************************
 extern int main(void);
-extern void GPIOP_ISR(void); // se describe en GPIO.c
+extern void UART2_ISR(void);
 
 //*****************************************************************************
 //
@@ -110,7 +110,7 @@ void (* const g_pfnVectors[])(void) =
     IntDefaultHandler,                      // GPIO Port F
     IntDefaultHandler,                      // GPIO Port G
     IntDefaultHandler,                      // GPIO Port H
-    IntDefaultHandler,                      // UART2 Rx and Tx
+    UART2_ISR,                              // UART2 Rx and Tx
     IntDefaultHandler,                      // SSI1 Rx and Tx
     IntDefaultHandler,                      // Timer 3 subtimer A
     IntDefaultHandler,                      // Timer 3 subtimer B
@@ -153,8 +153,7 @@ void (* const g_pfnVectors[])(void) =
     IntDefaultHandler,                      // GPIO Port N
     0,                                      // Reserved
     IntDefaultHandler,                      // Tamper
-    GPIOP_ISR,                              // GPIO Port P (Summary or P0)
-    //Poner el metodo arriba
+    IntDefaultHandler,                      // GPIO Port P (Summary or P0)
     IntDefaultHandler,                      // GPIO Port P1
     IntDefaultHandler,                      // GPIO Port P2
     IntDefaultHandler,                      // GPIO Port P3
